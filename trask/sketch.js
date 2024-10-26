@@ -1,6 +1,7 @@
 let traskfarm;
 let traskhouse;
 let traskroof;
+let traskrock;
 
 let horizon;
 let houseEdge;
@@ -9,6 +10,7 @@ function preload() {
   traskfarm = loadImage("../assets/traskfarm.jpg");
   traskhouse = loadImage("../assets/traskhouse.jpg");
   traskroof = loadImage("../assets/traskroof.jpg");
+  traskrock = loadImage("../assets/traskrock.jpg")
 }
 
 function rock() {
