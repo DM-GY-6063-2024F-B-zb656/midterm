@@ -12,5 +12,5 @@ With these designs, I'll be trying to make more elaborate drawings and sceneries
 
 My brainstorming sketches:
 
-![page1](./20241020_220003.jpg)
-![page2](./20241020_221518.jpg)
+![page1](./assets/20241020_220003.jpg)
+![page2](./assets/20241020_221518.jpg)
