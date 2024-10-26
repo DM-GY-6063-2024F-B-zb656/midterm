@@ -1,3 +1,13 @@
+let traskfarm;
+let traskhouse;
+let traskroof;
+
+function preload() {
+  traskfarm = loadImage("../assets/traskfarm.jpg");
+  traskhouse = loadImage("../assets/traskhouse.jpg");
+  traskroof = loadImage("../assets/traskroof.jpg");
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
@@ -9,7 +19,6 @@ function setup() {
 function draw() {
   background(141,186,237);
 
-
   //SUN ELLIPSE
   //I BELIEVE this is working. printing the xpos proves that it is increasing
   //and when i set the mod to 2000 instead of a day length it moved & restarted at beginning of screen
@@ -20,6 +29,21 @@ function draw() {
   fill(255,199,0);
   ellipse(xpos, 300, 100);
   print(xpos);
+
+  let horizon = 2 * (height/3);
+  let houseEdge = 2 * (width/3);
+
+  //FARMLAND
+  fill(255); //FILL RECTANGLE WITH traskfarm.jpg
+  rect(0, horizon, width, height/3);
+
+  //HOUSE or should the house just be replaced by transparent img of house?
+  fill(200); //FILL HOUSE BODY WITH traskhouse.jpg
+  rect(houseEdge, horizon - 50, 170, 100);
+
+  fill(150); //FILL ROOF WITH traskroof.jpg
+  triangle(houseEdge - 10, horizon - 50, houseEdge + 180, horizon - 50, houseEdge + 85, horizon - 100);
+
 
 
   //pool of blood comes out of the bottom of rock
