@@ -2,14 +2,31 @@ let traskfarm;
 let traskhouse;
 let traskroof;
 
+let horizon;
+let houseEdge;
+
 function preload() {
   traskfarm = loadImage("../assets/traskfarm.jpg");
   traskhouse = loadImage("../assets/traskhouse.jpg");
   traskroof = loadImage("../assets/traskroof.jpg");
 }
 
+function rock() {
+  line(300, horizon + 50, 450, horizon + 50);
+  line(450, horizon + 50, 440, horizon + 30);
+  curve(290, horizon + 55, 300, horizon + 50, 310, horizon + 35, 320, horizon + 35);
+  curve(315, horizon + 50, 310, horizon + 35, 325, horizon + 28, 340, horizon + 35);
+  line(325, horizon + 28, 345, horizon + 22);
+  line(345, horizon + 22, 360, horizon + 15);
+  curve(290, horizon + 50, 360, horizon + 15, 440, horizon + 30, 460, horizon + 90);
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  angleMode(DEGREES);
+
+  horizon = 2 * (height/3);
+  houseEdge = 2 * (width/3);
 
   //ground(farmland etc) doesn't change w/ time
   //house also doesnt change w/ time
@@ -30,19 +47,29 @@ function draw() {
   ellipse(xpos, 300, 100);
   print(xpos);
 
-  let horizon = 2 * (height/3);
-  let houseEdge = 2 * (width/3);
+  //DRAWINGS NOT RELIANT ON TIME:
 
-  //FARMLAND
-  fill(255); //FILL RECTANGLE WITH traskfarm.jpg
+  //FARMLAND AND HOUSE
+  fill(255); //to do: FILL RECTANGLE WITH traskfarm.jpg
   rect(0, horizon, width, height/3);
 
   //HOUSE or should the house just be replaced by transparent img of house?
-  fill(200); //FILL HOUSE BODY WITH traskhouse.jpg
+  fill(200); //to do: FILL HOUSE BODY WITH traskhouse.jpg
   rect(houseEdge, horizon - 50, 170, 100);
 
-  fill(150); //FILL ROOF WITH traskroof.jpg
+  fill(150); //to do: FILL ROOF WITH traskroof.jpg
   triangle(houseEdge - 10, horizon - 50, houseEdge + 180, horizon - 50, houseEdge + 85, horizon - 100);
+
+  //to do: door + windows
+
+  //ROCK
+  //fill with traskrock.jpg
+  rock();
+
+
+
+
+
 
 
 
