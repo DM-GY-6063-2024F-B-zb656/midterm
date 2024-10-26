@@ -1,5 +1,9 @@
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  //ground(farmland etc) doesn't change w/ time
+  //house also doesnt change w/ time
+  //rock in farmland doesn't change over time
 }
 
 function draw() {
@@ -16,4 +20,9 @@ function draw() {
   fill(255,199,0);
   ellipse(xpos, 300, 100);
   print(xpos);
+
+
+  //pool of blood comes out of the bottom of rock
+  //web images for this (collage-esque)
+  //pool grows bigger over the course of the day
 }
