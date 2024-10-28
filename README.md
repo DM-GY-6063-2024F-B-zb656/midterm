@@ -14,3 +14,33 @@ My brainstorming sketches:
 
 ![page1](./assets/20241020_220003.jpg)
 ![page2](./assets/20241020_221518.jpg)
+
+
+# Pseudocode
+
+For this portion, I set up a moving sun animation that is mapped to the current time of day, i.e. so that at 12pm, the sun should be roughly in the middle of the screen, and at 6pm the sun is nearing the end of the screen. Originally, I couldn't figure out how to set the sun's movement to the actual time of day, and so I instead just animated it to move across the screen over the length of a day using `millis()`:
+```
+let aDay = millis() % 86400000
+let xpos = map(aDay, 21600000, 72000000, -50, width + 50);
+fill(255,199,0);
+ellipse(xpos, 300, 100);
+```
+However, I realized that I could just convert the `hour()` and `minute()` functions into seconds, and add these together with `seconds()` and map the `xpos` variable against the seconds elapsed in real time. 
+
+I then added a sky gradient using an `if()` statement for the background color, where between midnight and 5am, the sky is dark blue, between 5am and 6am, it slowly turns from dark blue to sky blue, between 7pm and 8pm it turns from sky blue to dark blue, and between 8pm and midnight, it's dark blue again. I'm fairly sure this works, but I'd like to check it periodically between 6pm and 9pm to make sure the gradient functions properly.
+
+On the Trask page, I sketched out where the ground is, a basic house shape, and the rock. I also added a few images that I may use as the shape textures.
+
+
+TO-DO:
+1. Ideally, figure out how to make the sun move in an arc instead of a straight line across the screen, although I think that may end up being one of the harder things to figure out.
+
+2. On the Hamilton side, I need to draw the hills and the river.
+
+3. On the Trask side, draw a pool of blood coming out from under the rock, and animate so the pool gets bigger (and then recedes?).
+
+4. For both sides, figure out how to mask the shapes with images, and then how to transition between images. I'm imagining that one image can increasingly become more transparent as the second image becomes less transparent, so that the change between them isn't a single cut? 
+
+5. If time allows, perhaps put some nice blinking stars in the night sky.
+
+6. Make the intro html page look nicer.
