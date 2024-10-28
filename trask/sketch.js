@@ -89,7 +89,11 @@ function draw() {
 
   //ROCK or should the rock be replaced by a transparent img of a rock?
   //fill with traskrock.jpg
-  rock();
+  // traskrock.resize(500,0);
+  // traskrock.mask(rock());
+  // image(traskrock, 290, horizon + 10);
+  rock(); //HOW TO MAKE THE ROCK INTO AN OBJECT? or should i just get a transparent rock in here.
+  //MAKE ROCK into object with vertices? this may be easier. but not for the hills...
 
   //TO-DO: draw pool of blood animation
 }
