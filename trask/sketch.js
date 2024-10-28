@@ -23,6 +23,10 @@ function rock() {
   curve(290, horizon + 50, 360, horizon + 15, 440, horizon + 30, 460, horizon + 90);
 }
 
+function farm() {
+  rect(0, horizon, width, height/3);
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
@@ -69,8 +73,10 @@ function draw() {
   //DRAWINGS NOT RELIANT ON TIME:
 
   //FARMLAND
-  fill(255); //to do: FILL RECTANGLE WITH traskfarm.jpg
-  rect(0, horizon, width, height/3);
+  //to do: GET HIGHER RES PIC
+  traskfarm.resize(width, 0);
+  traskfarm.mask(farm());
+  image(traskfarm, 0, horizon);
 
   //HOUSE or should the house just be replaced by a transparent img of a house?
   fill(200); //to do: FILL HOUSE BODY WITH traskhouse.jpg
