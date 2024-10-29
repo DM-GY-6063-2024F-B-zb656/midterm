@@ -7,7 +7,7 @@ let horizon;
 let houseEdge;
 
 function preload() {
-  traskfarm = loadImage("../assets/traskfarm.jpg");
+  traskfarm = loadImage("../assets/traskfarm2.jpg");
   traskhouse = loadImage("../assets/traskhouse.jpg");
   traskroof = loadImage("../assets/traskroof.jpg");
   traskrock = loadImage("../assets/traskrock.jpg")
