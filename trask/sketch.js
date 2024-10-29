@@ -2,6 +2,7 @@ let traskfarm;
 let traskhouse;
 let traskroof;
 let traskrock;
+let roofmask;
 
 let horizon;
 let houseEdge;
@@ -10,7 +11,8 @@ function preload() {
   traskfarm = loadImage("../assets/traskfarm2.jpg");
   traskhouse = loadImage("../assets/traskhouse.jpg");
   traskroof = loadImage("../assets/traskroof.jpg");
-  traskrock = loadImage("../assets/traskrock.jpg")
+  traskrock = loadImage("../assets/traskrock.jpg");
+  roofmask = loadImage("../assets/roofmask.png");
 }
 
 function rock() {
@@ -21,14 +23,6 @@ function rock() {
   line(325, horizon + 28, 345, horizon + 22);
   line(345, horizon + 22, 360, horizon + 15);
   curve(290, horizon + 50, 360, horizon + 15, 440, horizon + 30, 460, horizon + 90);
-}
-
-function farm() {
-  rect(0, horizon, width, height/3);
-}
-
-function house() {
-  rect(houseEdge, horizon - 50, 170, 100);
 }
 
 function setup() {
@@ -78,18 +72,18 @@ function draw() {
 
   //FARMLAND
   //to do: GET HIGHER RES PIC
-  traskfarm.resize(width, 0);
-  traskfarm.mask(farm());
+  traskfarm.resize(width, height/3);
   image(traskfarm, 0, horizon);
 
   //HOUSE or should the house just be replaced by a transparent img of a house?
-  fill(200); //to do: FILL HOUSE BODY WITH traskhouse.jpg
   traskhouse.resize(170,100);
-  traskhouse.mask(house());
   image(traskhouse, houseEdge, horizon - 50);
 
-  fill(150); //to do: FILL ROOF WITH traskroof.jpg
-  triangle(houseEdge - 10, horizon - 50, houseEdge + 180, horizon - 50, houseEdge + 85, horizon - 100);
+  //to do: FIX IT SO THE IMAGE LOOKS NICE
+  traskroof.resize(width,height);
+  traskroof.mask(roofmask);
+  image(traskroof, 0, 0);
+  // triangle(houseEdge - 10, horizon - 50, houseEdge + 180, horizon - 50, houseEdge + 85, horizon - 100);
 
   //to do: door + windows?
 

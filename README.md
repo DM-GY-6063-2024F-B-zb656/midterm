@@ -44,3 +44,8 @@ TO-DO:
 5. If time allows, perhaps put some nice blinking stars in the night sky.
 
 6. Make the intro html page look nicer.
+
+
+# Final Coding
+
+Oct. 29: Realized that for shapes I want to be rectangular, no masking needs to be done. Masked the roof with triangle mask but I want to make it look nicer.
