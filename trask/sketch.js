@@ -27,6 +27,10 @@ function farm() {
   rect(0, horizon, width, height/3);
 }
 
+function house() {
+  rect(houseEdge, horizon - 50, 170, 100);
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
@@ -80,7 +84,9 @@ function draw() {
 
   //HOUSE or should the house just be replaced by a transparent img of a house?
   fill(200); //to do: FILL HOUSE BODY WITH traskhouse.jpg
-  rect(houseEdge, horizon - 50, 170, 100);
+  traskhouse.resize(170,100);
+  traskhouse.mask(house());
+  image(traskhouse, houseEdge, horizon - 50);
 
   fill(150); //to do: FILL ROOF WITH traskroof.jpg
   triangle(houseEdge - 10, horizon - 50, houseEdge + 180, horizon - 50, houseEdge + 85, horizon - 100);
