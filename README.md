@@ -52,3 +52,12 @@ Oct. 29:
 - Realized that for shapes I want to be rectangular, no masking needs to be done. Masked the roof with triangle mask but I want to make it look nicer.
 - Fixed the mask so the roof image displays higher res. I'd like to change the roof image perhaps to better match what a farmhouse roof would look like. But I need to find a good image for that. Changing images later is simple though as long as I have the right masking set up.
 
+- I think I can use `tint()` to make images transparent? If I put `tint(255, 0)` I think that makes the image fully transparent and `tint(255,128)` half-transparent. So I could set up mapping/if statement situation much like the sky gradient to make images become more and less transparent to flow between each other?
+
+-Made the hill masks by creating the hills thru ellipses and triangles to get the angles I wanted and then making those into transparent masks. I have the masking itself working, but I'm not satisfied with the pictures yet.
+
+
+TO-DO:
+1. Make rock into a mask and add the rock image.
+2. Create 3 or 4 pools of blood that transition between eachother. Perhaps across each hour, so with 4 pools it can be divided into 15 minute chunks. Can use `millis()` instead of time.
+

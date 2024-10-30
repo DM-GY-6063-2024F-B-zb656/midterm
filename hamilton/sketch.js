@@ -1,7 +1,21 @@
-//create the hills & river as functions up here?
+let flowers1;
+let flowers2;
+
+let hill1mask;
+let hill2mask;
+
+function preload() {
+  flowers1 = loadImage("../assets/flowers1.png");
+  flowers2 = loadImage("../assets/flowers2.png");
+
+  hill1mask = loadImage("../assets/hill1mask.png");
+  hill2mask = loadImage("../assets/hill2mask.png");
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  print(width, height);
 }
 
 function draw() {
@@ -53,4 +67,28 @@ function draw() {
   //draw hills and river
   //masked w/ images from web
   //hill should go from flower blooming to kind of dried out. use transparency to make flow between images smooth?
+
+  //ATTEMPT TO DRAW HILL
+
+  flowers2.resize(width, height);
+  flowers2.mask(hill2mask);
+  image(flowers2, 0, 0);
+
+  flowers1.resize(width,height);
+  flowers1.mask(hill1mask);
+  image(flowers1, 0, 0);
+
+  // fill('green');
+  // noStroke();
+  // ellipse(200, height, 1200, 700);
+  // ellipse(width/2, height, 500, 400);
+  // triangle(583, 481, 832, 556, 675, 626);
+  // triangle(957, 619, 1133, 747, 1016, height);
+
+
+
+}
+
+function mousePressed() {
+  print(mouseX, mouseY);
 }
