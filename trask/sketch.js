@@ -71,19 +71,17 @@ function draw() {
   //DRAWINGS NOT RELIANT ON TIME:
 
   //FARMLAND
-  //to do: GET HIGHER RES PIC
   traskfarm.resize(width, height/3);
   image(traskfarm, 0, horizon);
 
-  //HOUSE or should the house just be replaced by a transparent img of a house?
+  //HOUSE
   traskhouse.resize(170,100);
   image(traskhouse, houseEdge, horizon - 50);
 
-  //to do: FIX IT SO THE IMAGE LOOKS NICE
-  traskroof.resize(width,height);
+  //ROOF
+  traskroof.resize(200, 0);
   traskroof.mask(roofmask);
-  image(traskroof, 0, 0);
-  // triangle(houseEdge - 10, horizon - 50, houseEdge + 180, horizon - 50, houseEdge + 85, horizon - 100);
+  image(traskroof, houseEdge - 15, horizon - 250);
 
   //to do: door + windows?
 

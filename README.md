@@ -48,4 +48,7 @@ TO-DO:
 
 # Final Coding
 
-Oct. 29: Realized that for shapes I want to be rectangular, no masking needs to be done. Masked the roof with triangle mask but I want to make it look nicer.
+Oct. 29: 
+- Realized that for shapes I want to be rectangular, no masking needs to be done. Masked the roof with triangle mask but I want to make it look nicer.
+- Fixed the mask so the roof image displays higher res. I'd like to change the roof image perhaps to better match what a farmhouse roof would look like. But I need to find a good image for that. Changing images later is simple though as long as I have the right masking set up.
+
