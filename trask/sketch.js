@@ -3,6 +3,7 @@ let traskhouse;
 let traskroof;
 let traskrock;
 let roofmask;
+let rock;
 
 let horizon;
 let houseEdge;
@@ -12,18 +13,19 @@ function preload() {
   traskhouse = loadImage("../assets/traskhouse.jpg");
   traskroof = loadImage("../assets/traskroof.jpg");
   traskrock = loadImage("../assets/traskrock.jpg");
+  rock = loadImage("../assets/rock.png")
   roofmask = loadImage("../assets/roofmask.png");
 }
 
-function rock() {
-  line(300, horizon + 50, 450, horizon + 50);
-  line(450, horizon + 50, 440, horizon + 30);
-  curve(290, horizon + 55, 300, horizon + 50, 310, horizon + 35, 320, horizon + 35);
-  curve(315, horizon + 50, 310, horizon + 35, 325, horizon + 28, 340, horizon + 35);
-  line(325, horizon + 28, 345, horizon + 22);
-  line(345, horizon + 22, 360, horizon + 15);
-  curve(290, horizon + 50, 360, horizon + 15, 440, horizon + 30, 460, horizon + 90);
-}
+// function rock() {
+//   line(300, horizon + 50, 450, horizon + 50);
+//   line(450, horizon + 50, 440, horizon + 30);
+//   curve(290, horizon + 55, 300, horizon + 50, 310, horizon + 35, 320, horizon + 35);
+//   curve(315, horizon + 50, 310, horizon + 35, 325, horizon + 28, 340, horizon + 35);
+//   line(325, horizon + 28, 345, horizon + 22);
+//   line(345, horizon + 22, 360, horizon + 15);
+//   curve(290, horizon + 50, 360, horizon + 15, 440, horizon + 30, 460, horizon + 90);
+// }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -86,11 +88,14 @@ function draw() {
   //to do: door + windows?
 
   //ROCK or should the rock be replaced by a transparent img of a rock?
+  rock.resize(300,300);
+  image(rock, 300, horizon - 120);
+  
   //fill with traskrock.jpg
   // traskrock.resize(500,0);
   // traskrock.mask(rock());
   // image(traskrock, 290, horizon + 10);
-  rock(); //HOW TO MAKE THE ROCK INTO AN OBJECT? or should i just get a transparent rock in here.
+  // rock(); //HOW TO MAKE THE ROCK INTO AN OBJECT? or should i just get a transparent rock in here.
   //MAKE ROCK into object with vertices? this may be easier. but not for the hills...
 
   //TO-DO: draw pool of blood animation

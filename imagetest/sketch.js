@@ -1,14 +1,14 @@
-let flowers1;
+let rock;
 
 function preload() {
-  flowers1 = loadImage("../assets/flowers1.jpg")
+  rock = loadImage("../assets/rock.png");
 }
 function setup() {
+
   createCanvas(windowWidth, windowHeight);
   background(0,0);
-  
-  flowers1.resize(1200, 0);
-  image(flowers1, 0, 100);
+
+  image(rock, 0, 0);
 
 }
 

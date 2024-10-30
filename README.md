@@ -56,6 +56,7 @@ Oct. 29:
 
 -Made the hill masks by creating the hills thru ellipses and triangles to get the angles I wanted and then making those into transparent masks. I have the masking itself working, but I'm not satisfied with the pictures yet.
 
+- Instead of rock shape, I just added the image of a rock. Seemed easier.
 
 TO-DO:
 1. Make rock into a mask and add the rock image.

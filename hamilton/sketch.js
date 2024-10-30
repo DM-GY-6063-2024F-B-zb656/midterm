@@ -1,5 +1,9 @@
 let flowers1;
 let flowers2;
+let grass1;
+let grass2;
+let dried1;
+let dried2;
 
 let hill1mask;
 let hill2mask;
@@ -7,6 +11,10 @@ let hill2mask;
 function preload() {
   flowers1 = loadImage("../assets/flowers1.png");
   flowers2 = loadImage("../assets/flowers2.png");
+  grass1 = loadImage("../assets/grass1.jpg");
+  grass2 = loadImage("../assets/grass2.jpg");
+  dried1 = loadImage("../assets/dried1.jpg");
+  dried2 = loadImage("../assets/dried2.jpg");
 
   hill1mask = loadImage("../assets/hill1mask.png");
   hill2mask = loadImage("../assets/hill2mask.png");
@@ -14,8 +22,6 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
-  print(width, height);
 }
 
 function draw() {
@@ -48,6 +54,7 @@ function draw() {
 
   //SUN ANIMATION
   //to do: how to make sun move in arc instead of straight line?
+  //is there a way to put a kind of fuzziness aura around the sun?
   let xpos = map(daytime, 21600, 72000, -50, width + 50);
   fill(255,199,0);
   ellipse(xpos, 300, 100);
@@ -68,8 +75,7 @@ function draw() {
   //masked w/ images from web
   //hill should go from flower blooming to kind of dried out. use transparency to make flow between images smooth?
 
-  //ATTEMPT TO DRAW HILL
-
+  //FLOWERED HILLS
   flowers2.resize(width, height);
   flowers2.mask(hill2mask);
   image(flowers2, 0, 0);
@@ -78,13 +84,23 @@ function draw() {
   flowers1.mask(hill1mask);
   image(flowers1, 0, 0);
 
-  // fill('green');
-  // noStroke();
-  // ellipse(200, height, 1200, 700);
-  // ellipse(width/2, height, 500, 400);
-  // triangle(583, 481, 832, 556, 675, 626);
-  // triangle(957, 619, 1133, 747, 1016, height);
+  //GRASSY HILLS
+  // grass2.resize(width, height); 
+  // grass2.mask(hill2mask);
+  // image(grass2, 0, 0);
 
+  // grass1.resize(width, height); //maybe resize this image to be nicer
+  // grass1.mask(hill1mask);
+  // image(grass1, 0, 0);
+
+  //DRIED HILLS
+  // dried2.resize(width,height);
+  // dried2.mask(hill2mask);
+  // image(dried2, 0, 0);
+
+  // dried1.resize(width,height);
+  // dried1.mask(hill1mask);
+  // image(dried1, 0, 0);
 
 
 }
