@@ -8,6 +8,9 @@ let dried2;
 let hill1mask;
 let hill2mask;
 
+let fade;
+let appear;
+
 function preload() {
   flowers1 = loadImage("../assets/flowers1.png");
   flowers2 = loadImage("../assets/flowers2.png");
@@ -71,38 +74,95 @@ function draw() {
   // pop();
 
 
-  //draw hills and river
-  //masked w/ images from web
-  //hill should go from flower blooming to kind of dried out. use transparency to make flow between images smooth?
+  //HILL TRANSITIONS
+  let hillcount = millis() % 3600000
+  print(hillcount);
 
-  //FLOWERED HILLS
-  flowers2.resize(width, height);
-  flowers2.mask(hill2mask);
-  image(flowers2, 0, 0);
+  if (hillcount < 900000) { //full bloom for 15 min
+    flowers2.resize(width, height);
+    flowers2.mask(hill2mask);
+    image(flowers2, 0, 0);
+  
+    flowers1.resize(width,height);
+    flowers1.mask(hill1mask);
+    image(flowers1, 0, 0);
+  } else if (hillcount < 1200000) { //fade from bloom into grass for 5 min
+    fade = map(hillcount, 900000, 1200000, 255, 0);
+    tint(255, fade);
+    flowers2.resize(width, height);
+    flowers2.mask(hill2mask);
+    image(flowers2, 0, 0);
+  
+    flowers1.resize(width,height);
+    flowers1.mask(hill1mask);
+    image(flowers1, 0, 0);
 
-  flowers1.resize(width,height);
-  flowers1.mask(hill1mask);
-  image(flowers1, 0, 0);
+    appear = map(hillcount, 900000, 1200000, 0, 255);
+    tint(255, appear);
+    grass2.resize(width, height); 
+    grass2.mask(hill2mask);
+    image(grass2, 0, 0);
+  
+    grass1.resize(width, height);
+    grass1.mask(hill1mask);
+    image(grass1, 0, 0);
+  } else if (hillcount < 2100000) { //full grass for 15 min
+    grass2.resize(width, height); 
+    grass2.mask(hill2mask);
+    image(grass2, 0, 0);
+  
+    grass1.resize(width, height);
+    grass1.mask(hill1mask);
+    image(grass1, 0, 0);
+  } else if (hillcount < 2400000) { //fade from grass to dried for 5 min
+    fade = map(hillcount, 2100000, 2400000, 255, 0);
+    tint(255, fade);
+    grass2.resize(width, height); 
+    grass2.mask(hill2mask);
+    image(grass2, 0, 0);
+  
+    grass1.resize(width, height);
+    grass1.mask(hill1mask);
+    image(grass1, 0, 0);
 
-  //GRASSY HILLS
-  // grass2.resize(width, height); 
-  // grass2.mask(hill2mask);
-  // image(grass2, 0, 0);
+    appear = map(hillcount, 2100000, 2400000, 0, 255);
+    tint(255, appear);
+    dried2.resize(width,height);
+    dried2.mask(hill2mask);
+    image(dried2, 0, 0);
+  
+    dried1.resize(width,height);
+    dried1.mask(hill1mask);
+    image(dried1, 0, 0);
+  } else if (hillcount < 3300000) { //full dried for 15 min
+    dried2.resize(width,height);
+    dried2.mask(hill2mask);
+    image(dried2, 0, 0);
+  
+    dried1.resize(width,height);
+    dried1.mask(hill1mask);
+    image(dried1, 0, 0);
+  } else if (hillcount < 3600000) { //fade from dried to bloom for 5 min
+    fade = map(hillcount, 3300000, 3600000, 255, 0);
+    tint(255, fade);
+    dried2.resize(width,height);
+    dried2.mask(hill2mask);
+    image(dried2, 0, 0);
+  
+    dried1.resize(width,height);
+    dried1.mask(hill1mask);
+    image(dried1, 0, 0);
 
-  // grass1.resize(width, height); //maybe resize this image to be nicer
-  // grass1.mask(hill1mask);
-  // image(grass1, 0, 0);
-
-  //DRIED HILLS
-  // dried2.resize(width,height);
-  // dried2.mask(hill2mask);
-  // image(dried2, 0, 0);
-
-  // dried1.resize(width,height);
-  // dried1.mask(hill1mask);
-  // image(dried1, 0, 0);
-
-
+    appear = map(hillcount, 3300000, 3600000, 0, 255);
+    tint(255, appear);
+    flowers2.resize(width, height);
+    flowers2.mask(hill2mask);
+    image(flowers2, 0, 0);
+  
+    flowers1.resize(width,height);
+    flowers1.mask(hill1mask);
+    image(flowers1, 0, 0);
+  }
 }
 
 function mousePressed() {
