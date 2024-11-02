@@ -4,6 +4,14 @@ let traskroof;
 let traskrock;
 let roofmask;
 let rock;
+let pool1mask;
+let pool2mask;
+let pool3mask;
+let pool4mask;
+let pool1;
+let pool2;
+let pool3;
+let pool4;
 
 let horizon;
 let houseEdge;
@@ -15,6 +23,14 @@ function preload() {
   traskrock = loadImage("../assets/traskrock.jpg");
   rock = loadImage("../assets/rock.png")
   roofmask = loadImage("../assets/roofmask.png");
+  pool1mask = loadImage("../assets/pool1mask.png");
+  pool2mask = loadImage("../assets/pool2mask.png");
+  pool3mask = loadImage("../assets/pool3mask.png");
+  pool4mask = loadImage("../assets/pool4mask.png");
+  pool1 = loadImage("../assets/pool1.png");
+  pool2 = loadImage("../assets/pool2.png");
+  pool3 = loadImage("../assets/pool3.png");
+  pool4 = loadImage("../assets/pool4.png");
 }
 
 // function rock() {
@@ -76,7 +92,7 @@ function draw() {
   traskfarm.resize(width, height/3);
   image(traskfarm, 0, horizon);
 
-  //HOUSE
+  //HOUSE  //to do: door + windows?
   traskhouse.resize(170,100);
   image(traskhouse, houseEdge, horizon - 50);
 
@@ -85,18 +101,28 @@ function draw() {
   traskroof.mask(roofmask);
   image(traskroof, houseEdge - 15, horizon - 250);
 
-  //to do: door + windows?
+  //POOLS OF BLOOD
 
-  //ROCK or should the rock be replaced by a transparent img of a rock?
+  //pool1 works
+  // pool1.resize(width, height);
+  // pool1.mask(pool1mask);
+  // image(pool1, 0,0);
+
+  //pool2 works
+  // pool2.resize(width, height);
+  // pool2.mask(pool2mask);
+  // image(pool2, 0,0);
+
+  // pool3.resize(width, height);
+  // pool3.mask(pool3mask);
+  // image(pool3, 0,0);
+
+  //pool4 works
+  // pool4.resize(width, height);
+  // pool4.mask(pool4mask);
+  // image(pool4, 0,0);
+  
+  //ROCK
   rock.resize(300,300);
   image(rock, 300, horizon - 120);
-  
-  //fill with traskrock.jpg
-  // traskrock.resize(500,0);
-  // traskrock.mask(rock());
-  // image(traskrock, 290, horizon + 10);
-  // rock(); //HOW TO MAKE THE ROCK INTO AN OBJECT? or should i just get a transparent rock in here.
-  //MAKE ROCK into object with vertices? this may be easier. but not for the hills...
-
-  //TO-DO: draw pool of blood animation
 }

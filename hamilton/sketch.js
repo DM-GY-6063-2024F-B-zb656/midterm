@@ -64,16 +64,6 @@ function draw() {
   // print(xpos);
 
 
-  //TEST SUN ARC not sure about the new x mapping?
-  // push();
-  // translate(width/2, height);
-  // let xpos = map(daytime, 21600, 72000, (-width/2), width/2);
-  // let ypos = sqrt(pow(width/2, 2) - pow(x, 2));
-  // fill(255,199,0);
-  // ellipse(xpos, ypos, 100);
-  // pop();
-
-
   //HILL TRANSITIONS
   let hillcount = millis() % 3600000
   print(hillcount);
@@ -165,6 +155,6 @@ function draw() {
   }
 }
 
-function mousePressed() {
-  print(mouseX, mouseY);
-}
+// function mousePressed() {
+//   print(mouseX, mouseY);
+// }
