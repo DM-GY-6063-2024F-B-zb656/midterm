@@ -74,7 +74,6 @@ I also decided to add some blinking stars in the night sky, to look nice, which 
 
 
 
-FIX THE HTML WHAT PAGE IT OPENS ON
 
 IF TIME ALLOWS:
 make clouds? could make as a shape in function and then just a simple make them slowly float across sky, randomized y location randomized size? idk.

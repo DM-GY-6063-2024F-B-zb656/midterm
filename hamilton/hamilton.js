@@ -27,6 +27,14 @@ function preload() {
   hill2mask = loadImage("../assets/hill2mask.png");
 }
 
+function cloud1(x, y) {
+  rect(x, y, 100, 50, 20);
+  ellipse(x + 20, y + 25, 50);
+  ellipse(x + 30, y, 30);
+  ellipse(x + 60, y, 50);
+  ellipse(x + 80, y + 20, 50);
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   angleMode(DEGREES);
@@ -99,24 +107,27 @@ function draw() {
   //is there a way to put a kind of fuzziness aura around the sun?
   deg = map(daytime, 21600, 72000, 180, 360)
   let rad = sin(deg) * 8 + (width/1.8);
-  let x = rad * cos(deg);
-  let y = rad * sin(deg);
+  let xpos = rad * cos(deg);
+  let ypos = rad * sin(deg);
 
   push();
   translate(width/2, height * 1.25);
   fill(255,199,0);
-  ellipse(x, y, 100);
+  ellipse(xpos, ypos, 100);
   pop();
-  print(x, y);
 
   if (daytime < 21600 || daytime > 72000) {
-    x = 0;
-    y = 0;
+    xpos = 0;
+    ypos = 0;
   }
-  // let xpos = map(daytime, 21600, 72000, -50, width + 50);
-  // fill(255,199,0);
-  // ellipse(xpos, 300, 100);
-  // print(xpos);
+
+  //CLOUDS?
+  let x = frameCount / 10;
+  fill(255);
+  noStroke();
+  cloud1(x % width + 500, 200);
+  
+
 
 
   //HILL TRANSITIONS you should make these faster?
