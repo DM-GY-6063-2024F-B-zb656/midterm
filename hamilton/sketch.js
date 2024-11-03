@@ -11,6 +11,9 @@ let hill2mask;
 let fade;
 let appear;
 
+let NUM_OBJS = 100;
+let circles = [];
+
 function preload() {
   flowers1 = loadImage("../assets/flowers1.png");
   flowers2 = loadImage("../assets/flowers2.png");
@@ -25,6 +28,17 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  for (let cnt = 0; cnt < NUM_OBJS; cnt++) {
+    let aCircle = {
+      x: random(width),
+      y: random(height),
+      d: random(1,5),
+      a: 0,
+      da: random(1,10),
+    };
+    circles.push(aCircle);
+  }
 }
 
 function draw() {
@@ -38,7 +52,16 @@ function draw() {
   //SKY GRADIENT (check functioning)
   //TO-DO: add nice blinking stars?
   if (daytime < 18000 || daytime > 72000) {
+    //nighttime
     background(0,31,66)
+    for(let idx = 0; idx < circles.length; idx ++) {
+      let mCircle = circles[idx];
+      fill(255, mCircle.a);
+      noStroke();
+      ellipse(mCircle.x, mCircle.y, mCircle.d);
+  
+      mCircle.a = (mCircle.a + mCircle.da) % 255;
+    }
   } else if (daytime < 21600) {
     //gradient from night to normal
     let red = map(daytime, 18000, 21600, 0, 141);
@@ -52,6 +75,7 @@ function draw() {
     let blue = map(daytime, 68400, 72000, 237, 66);
     background(red, green, blue);
   } else {
+    //daytime
     background(141,186,237);
   }
 
@@ -64,9 +88,9 @@ function draw() {
   // print(xpos);
 
 
-  //HILL TRANSITIONS
+  //HILL TRANSITIONS you should make these faster actually
   let hillcount = millis() % 3600000
-  print(hillcount);
+  // print(hillcount);
 
   if (hillcount < 900000) { //full bloom for 15 min
     flowers2.resize(width, height);

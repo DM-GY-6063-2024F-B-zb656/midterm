@@ -16,6 +16,14 @@ let pool4;
 let horizon;
 let houseEdge;
 
+let clicks;
+let fade;
+let appear;
+let poolcount;
+
+let NUM_OBJS = 100;
+let circles = [];
+
 function preload() {
   traskfarm = loadImage("../assets/traskfarm2.jpg");
   traskhouse = loadImage("../assets/traskhouse.jpg");
@@ -48,6 +56,18 @@ function setup() {
 
   horizon = 2 * (height/3);
   houseEdge = 2 * (width/3);
+  clicks = 0;
+
+  for (let cnt = 0; cnt < NUM_OBJS; cnt++) {
+    let aCircle = {
+      x: random(width),
+      y: random(height),
+      d: random(1,5),
+      a: 0,
+      da: random(1,10),
+    };
+    circles.push(aCircle);
+  }
 }
 
 function draw() {
@@ -61,7 +81,16 @@ function draw() {
   //SKY GRADIENT (check functioning)
   //TO-DO: add nice blinking stars?
   if (daytime < 18000 || daytime > 72000) {
-    background(0,31,66)
+    background(0,31,66);
+
+    for(let idx = 0; idx < circles.length; idx ++) {
+      let mCircle = circles[idx];
+      fill(255, mCircle.a);
+      noStroke();
+      ellipse(mCircle.x, mCircle.y, mCircle.d);
+  
+      mCircle.a = (mCircle.a + mCircle.da) % 255;
+    }
   } else if (daytime < 21600) {
     //gradient from night to normal
     let red = map(daytime, 18000, 21600, 0, 141);
@@ -85,9 +114,6 @@ function draw() {
   ellipse(xpos, 300, 100);
   // print(xpos);
 
-
-  //DRAWINGS NOT RELIANT ON TIME:
-
   //FARMLAND
   traskfarm.resize(width, height/3);
   image(traskfarm, 0, horizon);
@@ -102,27 +128,118 @@ function draw() {
   image(traskroof, houseEdge - 15, horizon - 250);
 
   //POOLS OF BLOOD
-
-  //pool1 works
-  // pool1.resize(width, height);
-  // pool1.mask(pool1mask);
-  // image(pool1, 0,0);
-
-  //pool2 works
-  // pool2.resize(width, height);
-  // pool2.mask(pool2mask);
-  // image(pool2, 0,0);
-
-  // pool3.resize(width, height);
-  // pool3.mask(pool3mask);
-  // image(pool3, 0,0);
-
-  //pool4 works
-  // pool4.resize(width, height);
-  // pool4.mask(pool4mask);
-  // image(pool4, 0,0);
+  push();
+  let poolcount = millis() % 60000;
   
+  if (poolcount < 7000) {
+    pool1.resize(width, height);
+    pool1.mask(pool1mask);
+    image(pool1, 0,0);
+  } else if (poolcount < 10000) {
+    pool1.resize(width, height);
+    pool1.mask(pool1mask);
+    image(pool1, 0,0);
+
+    appear = map(poolcount, 7000, 10000, 0, 255);
+    tint(255, appear);
+    pool2.resize(width, height);
+    pool2.mask(pool2mask);
+    image(pool2, 0,0);
+  } else if (poolcount < 17000) {
+    pool2.resize(width, height);
+    pool2.mask(pool2mask);
+    image(pool2, 0,0);
+  } else if (poolcount < 20000) {
+    pool1.resize(width, height);
+    pool1.mask(pool1mask);
+    image(pool1, 0,0);
+
+    pool2.resize(width, height);
+    pool2.mask(pool2mask);
+    image(pool2, 0,0);
+
+    appear = map(poolcount, 17000, 20000, 0, 255);
+    tint(255, appear);
+    pool3.resize(width, height);
+    pool3.mask(pool3mask);
+    image(pool3, 0,0);
+  } else if (poolcount < 27000) {
+    pool3.resize(width, height);
+    pool3.mask(pool3mask);
+    image(pool3, 0,0);
+  } else if (poolcount < 30000) {
+    pool1.resize(width, height);
+    pool1.mask(pool1mask);
+    image(pool1, 0,0);
+
+    pool2.resize(width, height);
+    pool2.mask(pool2mask);
+    image(pool2, 0,0);
+
+    pool3.resize(width, height);
+    pool3.mask(pool3mask);
+    image(pool3, 0,0);
+
+    appear = map(poolcount, 27000, 30000, 0, 255);
+    tint(255, appear);
+    pool4.resize(width, height);
+    pool4.mask(pool4mask);
+    image(pool4, 0,0);
+  } else if (poolcount < 37000) {
+    pool4.resize(width, height);
+    pool4.mask(pool4mask);
+    image(pool4, 0,0);
+  } else if (poolcount < 40000) {
+    pool3.resize(width, height);
+    pool3.mask(pool3mask);
+    image(pool3, 0,0);
+
+    fade = map(poolcount, 37000, 40000, 255, 0);
+    tint(255, fade);
+    pool4.resize(width, height);
+    pool4.mask(pool4mask);
+    image(pool4, 0,0);
+  } else if (poolcount < 47000) {
+    pool3.resize(width, height);
+    pool3.mask(pool3mask);
+    image(pool3, 0,0);
+  } else if (poolcount < 50000) {
+    pool2.resize(width, height);
+    pool2.mask(pool2mask);
+    image(pool2, 0,0);
+
+    fade = map(poolcount, 47000, 50000, 255, 0);
+    tint(255, fade);
+    pool3.resize(width, height);
+    pool3.mask(pool3mask);
+    image(pool3, 0,0);
+  } else if (poolcount < 57000) {
+    pool2.resize(width, height);
+    pool2.mask(pool2mask);
+    image(pool2, 0,0);
+  } else if (poolcount < 60000) {
+    pool1.resize(width, height);
+    pool1.mask(pool1mask);
+    image(pool1, 0,0);
+
+    fade = map(poolcount, 57000, 60000, 255, 0);
+    tint(255, fade);
+    pool2.resize(width, height);
+    pool2.mask(pool2mask);
+    image(pool2, 0,0);
+  }
+  pop();
+
   //ROCK
   rock.resize(300,300);
   image(rock, 300, horizon - 120);
 }
+
+function mouseClicked() {
+  // clicks++
+  // let oddEven = clicks % 2;
+  // print(oddEven);
+}
+
+//should the pools of blood be in mouseclicked and that would start the cycle?
+//like hills go no matter what but the choice to enact violence is on the user

@@ -1,35 +1,31 @@
-let pool1;
-let pool2;
-let pool3;
-let pool4;
+let NUM_OBJS = 100;
+let circles = [];
 
-function preload() {
-  pool1 = loadImage("../assets/flesh.jpg");
-  pool2 = loadImage("../assets/dragonskinred.jpg");
-  pool3 = loadImage("../assets/abstract8.jpg");
-  pool4 = loadImage("../assets/bloodcells-1.jpg");
-}
 
 function setup() {
-
   createCanvas(windowWidth, windowHeight);
-  background(0,0);
-  fill(0);
-  // pool3.resize(400,400);
-  // image(pool3, 245, (2 * (height/3)) - 100)
-
-  // pool2.resize(310,310);
-  // image(pool2, 295, (2 * (height/3)) - 100)
-
-  pool1.resize(210,210);
-  image(pool1, 345, (2 * (height/3)))
-
-  // ellipse(450, (2 * (height/3)) + 70, 200, 70) //pool 1
-  // ellipse(450, (2 * (height/3)) + 70, 300, 100) // pool 2
-  // ellipse(450, (2 * (height/3)) + 80, 350, 120) // pool 3
-
+  for (let cnt = 0; cnt < NUM_OBJS; cnt++) {
+    let aCircle = {
+      x: random(width),
+      y: random(height),
+      d: random(25,50),
+      a: 0,
+      da: random(1,10), //you could totally make like a night city skyline with blinking neon signs with this
+    };
+    circles.push(aCircle);
+  }
+  print(circles);
 }
 
-function mousePressed() {
-  save();
+function draw() {
+  background(0);  
+  noStroke();
+
+  for(let idx = 0; idx < circles.length; idx ++) {
+    let mCircle = circles[idx];
+    fill(255, mCircle.a);
+    ellipse(mCircle.x, mCircle.y, mCircle.d);
+
+    mCircle.a = (mCircle.a + mCircle.da) % 255;
+  }
 }
