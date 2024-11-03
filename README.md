@@ -72,30 +72,10 @@ ellipse(xpos, 300, 100);
 
 I also decided to add some blinking stars in the night sky, to look nice, which I did by just tweaking one of the exercises we did in an earlier class session.
 
+
+
+FIX THE HTML WHAT PAGE IT OPENS ON
+
 IF TIME ALLOWS:
 make clouds? could make as a shape in function and then just a simple make them slowly float across sky, randomized y location randomized size? idk.
 
-
-
-index save
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
-    <style>
-      * {
-        box-sizing: border-box;
-      }
-      html, body {
-        margin: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <ul>
-      <li><a href="./hamilton/">The Hamiltons</a></li>
-      <li><a href="./trask/">The Trasks</a></li>
-    </ul>
-  </body>
-</html>
