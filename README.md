@@ -48,17 +48,54 @@ TO-DO:
 
 # Final Coding
 
-Oct. 29: 
-- Realized that for shapes I want to be rectangular, no masking needs to be done. Masked the roof with triangle mask but I want to make it look nicer.
-- Fixed the mask so the roof image displays higher res. I'd like to change the roof image perhaps to better match what a farmhouse roof would look like. But I need to find a good image for that. Changing images later is simple though as long as I have the right masking set up.
+In the final stages of the project, I did a lot with getting images and animations working. I realized that for rectangular shapes, masking wasn't really necessary, as I could just resize the image to where I wanted it. I figured out masking for the house roof, the hills, and the pools of blood. In my original code I had made a rock shape with lines and curves, and while we were shown how to make these shape functions into proper shape objects by using vertices, I wasn't sure how to make that work when curves were involved, and eventually I decided to simply use a transparent image of a rock instead, since I liked the way that looked better.
 
-- I think I can use `tint()` to make images transparent? If I put `tint(255, 0)` I think that makes the image fully transparent and `tint(255,128)` half-transparent. So I could set up mapping/if statement situation much like the sky gradient to make images become more and less transparent to flow between each other?
+Since the hills were less precise shapes than the rock was, I made the hill masks by creating the shape of the hills in my image test sketch with ellipses and triangles, and turning them into transparent masks. For both the hills and the pools of blood, it took a lot of fiddling around to get the images in the proper placement and resolution that I wanted. Eventually I realized the easiest way to do this was to place the image where I wanted its final spot to be in my image test sketch, and save the entire page as an image, since that way I wouldn't have to deal with resizing the image and mask in the actual sketch.
 
--Made the hill masks by creating the hills thru ellipses and triangles to get the angles I wanted and then making those into transparent masks. I have the masking itself working, but I'm not satisfied with the pictures yet.
+Once I found out about `tint()`, making the hill and blood animations was much easier than I thought it would be, and the hardest part was mostly figuring out how to properly time everything. As of writing this, the hill animation moves over the course of an hour, moving from full bloom to grass to dried hills, then back to bloom. By mapping 0 to 255 (and vice versa) to the `millis()` count and using that result as a variable in `tint()`, I was able to make the images fade into each other during the transition between stages. 
 
-- Instead of rock shape, I just added the image of a rock. Seemed easier.
+I did the same concept for the blood animation, although I wanted that one to move faster, so I have it staged over the course of 1 minute. I also decided I wanted to make it so that the blood animation is only triggered once the user clicks the page. To me, this is a way of representing one of the main themes of the book, which is the contrast between the unchangeable natural flow of the world and man's ability to control his actions and life. In the book, it's exactly *because* life continues moving on no matter what we do that makes it matter so much that we take responsibility for own actions. In this way, the hills on the Hamilton page continue their transition through the natural life cycle of the valley without user interference, but on the Trask page, the ability to enact or stop violence is up to the user. Figuring out how to make the animation rely on clicks was tricky, but I figured it out with help from the professor. 
 
-TO-DO:
-1. Make rock into a mask and add the rock image.
-2. Create 3 or 4 pools of blood that transition between eachother. Perhaps across each hour, so with 4 pools it can be divided into 15 minute chunks. Can use `millis()` instead of time.
+Next, I used the feedback from the second midterm milestone to try and get the sun moving in an arc. I tested it out in my image test sketch with a shorter timeframe to see if the movement actually worked, which it does. There were some issues with the sun appearing before the actual "sunrise" time started, which I dealt with just by inserting
+```
+  if (daytime < 21600 || daytime > 72000) {
+    x = 0;
+    y = 0;
+  }
+```
+into my code. I'm fairly sure the arc movement works on my larger day timeframe, but just for posterity, this was the original code for the sun movement in a straight line:
+```
+let xpos = map(daytime, 21600, 72000, width + 50, -50);
+fill(255,199,0);
+ellipse(xpos, 300, 100);
+```
 
+I also decided to add some blinking stars in the night sky, to look nice, which I did by just tweaking one of the exercises we did in an earlier class session.
+
+IF TIME ALLOWS:
+make clouds? could make as a shape in function and then just a simple make them slowly float across sky, randomized y location randomized size? idk.
+
+
+
+index save
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html, body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="./hamilton/">The Hamiltons</a></li>
+      <li><a href="./trask/">The Trasks</a></li>
+    </ul>
+  </body>
+</html>
