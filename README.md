@@ -74,4 +74,9 @@ I also decided to add some stars and clouds in the night sky, to look nice, whic
 
 
 My notes to figure out animations, etc:
+![page1](./assets/20241103_233629.jpg)
+![page2](./assets/20241103_233633.jpg)
+![page3](./assets/20241103_233643.jpg)
+![page4](./assets/20241103_233700.jpg)
+![page5](./assets/20241103_233705.jpg)
 

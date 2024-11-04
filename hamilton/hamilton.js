@@ -129,10 +129,11 @@ function draw() {
   let x = frameCount / 10;
   fill(255);
   noStroke();
-  cloud((x % width) + 500, y);
+  cloud(x % (width + 500), y);
 
   //HILL TRANSITIONS
   let hillcount = millis() % 3600000;
+  print(hillcount);
 
   if (hillcount < 900000) {
     //full bloom

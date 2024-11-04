@@ -151,7 +151,7 @@ function draw() {
   let x = frameCount / 10;
   fill(255);
   noStroke();
-  cloud((x % width) + 500, y);
+  cloud(x % (width + 500), y);
 
   //FARM AND HOUSE
   image(traskfarm, 0, horizon);
