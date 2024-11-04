@@ -104,7 +104,6 @@ function draw() {
     background(red, green, blue);
   } else {
     //day
-    //day
     background(141, 186, 237);
   }
 
