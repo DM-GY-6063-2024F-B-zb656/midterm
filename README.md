@@ -70,11 +70,8 @@ fill(255,199,0);
 ellipse(xpos, 300, 100);
 ```
 
-I also decided to add some blinking stars in the night sky, to look nice, which I did by just tweaking one of the exercises we did in an earlier class session.
+I also decided to add some stars and clouds in the night sky, to look nice, which I did by just tweaking one of the exercises we did in an earlier class session. 
 
 
-
-
-IF TIME ALLOWS:
-make clouds? could make as a shape in function and then just a simple make them slowly float across sky, randomized y location randomized size? idk.
+My notes to figure out animations, etc:
 

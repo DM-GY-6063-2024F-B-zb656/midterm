@@ -12,6 +12,7 @@ let appear;
 
 let NUM_OBJS = 100;
 let circles = [];
+let y;
 
 let daytime;
 let deg;
@@ -27,7 +28,7 @@ function preload() {
   hill2mask = loadImage("../assets/hill2mask.png");
 }
 
-function cloud1(x, y) {
+function cloud(x, y) {
   rect(x, y, 100, 50, 20);
   ellipse(x + 20, y + 25, 50);
   ellipse(x + 30, y, 30);
@@ -38,33 +39,35 @@ function cloud1(x, y) {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   angleMode(DEGREES);
+  y = random(0, height / 2);
 
-  let a = createA('https://dm-gy-6063-2024f-b-zb656.github.io/midterm/trask/', 'Go East');
+  let a = createA(
+    "https://dm-gy-6063-2024f-b-zb656.github.io/midterm/trask/",
+    "Go East"
+  );
   a.position(width - 150, 50);
-  a.style('color', 'black');
-  a.style('font-size', '20px');
-  a.style('font-family', 'Georgia');
+  a.style("color", "white");
+  a.style("font-size", "20px");
+  a.style("font-family", "Georgia");
 
   flowers2.resize(width, height);
   flowers2.mask(hill2mask);
-  flowers1.resize(width,height);
+  flowers1.resize(width, height);
   flowers1.mask(hill1mask);
-  grass2.resize(width, height); 
+  grass2.resize(width, height);
   grass2.mask(hill2mask);
   grass1.resize(width, height);
   grass1.mask(hill1mask);
-  dried2.resize(width,height);
+  dried2.resize(width, height);
   dried2.mask(hill2mask);
-  dried1.resize(width,height);
+  dried1.resize(width, height);
   dried1.mask(hill1mask);
 
   for (let cnt = 0; cnt < NUM_OBJS; cnt++) {
     let aCircle = {
       x: random(width),
       y: random(height),
-      d: random(1,5),
-      a: 0,
-      da: random(1,10),
+      d: random(1, 5),
     };
     circles.push(aCircle);
   }
@@ -78,41 +81,42 @@ function draw() {
   let daytime = h + m + s;
 
   //SKY GRADIENT
-  if (daytime < 18000 || daytime > 72000) { //night
-    background(0,31,66)
-    for(let idx = 0; idx < circles.length; idx ++) {
+  if (daytime < 18000 || daytime > 72000) {
+    //night
+    background(0, 23, 54);
+    for (let idx = 0; idx < circles.length; idx++) {
       let mCircle = circles[idx];
-      fill(255, mCircle.a);
+      fill(255, 255);
       noStroke();
       ellipse(mCircle.x, mCircle.y, mCircle.d);
-  
-      mCircle.a = (mCircle.a + mCircle.da) % 255;
     }
-  } else if (daytime < 21600) { //night to day gradient
+  } else if (daytime < 21600) {
+    //night to day gradient
     let red = map(daytime, 18000, 21600, 0, 141);
-    let green = map(daytime, 18000, 21600, 31, 186);
-    let blue = map(daytime, 18000, 21600, 66, 237);
+    let green = map(daytime, 18000, 21600, 23, 186);
+    let blue = map(daytime, 18000, 21600, 54, 237);
     background(red, green, blue);
-  } else if (daytime > 68400) { //day to night gradient
+  } else if (daytime > 68400) {
+    //day to night gradient
     let red = map(daytime, 68400, 72000, 141, 0);
-    let green = map(daytime, 68400, 72000, 186, 31);
-    let blue = map(daytime, 68400, 72000, 237, 66);
+    let green = map(daytime, 68400, 72000, 186, 23);
+    let blue = map(daytime, 68400, 72000, 237, 54);
     background(red, green, blue);
-  } else { //day
-    background(141,186,237);
+  } else {
+    //day
+    //day
+    background(141, 186, 237);
   }
 
   //SUN ANIMATION
-  //to do: how to make sun move in arc instead of straight line?
-  //is there a way to put a kind of fuzziness aura around the sun?
-  deg = map(daytime, 21600, 72000, 180, 360)
-  let rad = sin(deg) * 8 + (width/1.8);
+  deg = map(daytime, 21600, 72000, 180, 360);
+  let rad = sin(deg) * 8 + width / 1.8;
   let xpos = rad * cos(deg);
   let ypos = rad * sin(deg);
 
   push();
-  translate(width/2, height * 1.25);
-  fill(255,199,0);
+  translate(width / 2, height * 1.25);
+  fill(255, 199, 0);
   ellipse(xpos, ypos, 100);
   pop();
 
@@ -121,22 +125,21 @@ function draw() {
     ypos = 0;
   }
 
-  //CLOUDS?
+  //CLOUDS
   let x = frameCount / 10;
   fill(255);
   noStroke();
-  cloud1(x % width + 500, 200);
-  
+  cloud((x % width) + 500, y);
 
+  //HILL TRANSITIONS
+  let hillcount = millis() % 3600000;
 
-
-  //HILL TRANSITIONS you should make these faster?
-  let hillcount = millis() % 3600000
-
-  if (hillcount < 900000) { //full bloom
+  if (hillcount < 900000) {
+    //full bloom
     image(flowers2, 0, 0);
     image(flowers1, 0, 0);
-  } else if (hillcount < 1200000) { //bloom to grass transition
+  } else if (hillcount < 1200000) {
+    //bloom to grass transition
     fade = map(hillcount, 900000, 1200000, 255, 0);
     tint(255, fade);
     image(flowers2, 0, 0);
@@ -146,10 +149,12 @@ function draw() {
     tint(255, appear);
     image(grass2, 0, 0);
     image(grass1, 0, 0);
-  } else if (hillcount < 2100000) { //full grass
+  } else if (hillcount < 2100000) {
+    //full grass
     image(grass2, 0, 0);
     image(grass1, 0, 0);
-  } else if (hillcount < 2400000) { //grass to dried transition
+  } else if (hillcount < 2400000) {
+    //grass to dried transition
     fade = map(hillcount, 2100000, 2400000, 255, 0);
     tint(255, fade);
     image(grass2, 0, 0);
@@ -159,10 +164,12 @@ function draw() {
     tint(255, appear);
     image(dried2, 0, 0);
     image(dried1, 0, 0);
-  } else if (hillcount < 3300000) { //full dried
+  } else if (hillcount < 3300000) {
+    //full dried
     image(dried2, 0, 0);
     image(dried1, 0, 0);
-  } else if (hillcount < 3600000) { //dried to bloom transition
+  } else if (hillcount < 3600000) {
+    //dried to bloom transition
     fade = map(hillcount, 3300000, 3600000, 255, 0);
     tint(255, fade);
     image(dried2, 0, 0);

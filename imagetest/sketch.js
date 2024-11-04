@@ -1,36 +1,33 @@
-let NUM_OBJS = 100;
-let circles = [];
-let blinkTime;
+let NUM_OBJS = 2;
+let clouds = [];
+
+function cloud(x, y) {
+  rect(x, y, 100, 50, 20);
+  ellipse(x + 20, y + 25, 50);
+  ellipse(x + 30, y, 30);
+  ellipse(x + 60, y, 50);
+  ellipse(x + 80, y + 20, 50);
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
   for (let cnt = 0; cnt < NUM_OBJS; cnt++) {
-    let aCircle = {
-      x: random(width),
-      y: random(height),
-      d: random(1,5),
-      a: 0,
-      da: random(1,3),
+    let aCloud = {
+      x: random(0, width/2),
+      y: random(0, height/2),
     };
-    circles.push(aCircle);
+    clouds.push(aCloud);
   }
 }
 
 function draw() {
   background(0);
-  for(let idx = 0; idx < circles.length; idx ++) {
-    let mCircle = circles[idx];
-    fill(255, mCircle.a);
+  for(let idx = 0; idx < clouds.length; idx ++) {
+    let mCloud = clouds[idx];
+    mCloud.x = frameCount / 10;
+    fill(255);
     noStroke();
-    ellipse(mCircle.x, mCircle.y, mCircle.d);
-
-    blinkTime = millis() % 300000;
-    mCircle.a = (mCircle.a + map(blinkTime, 0, 300000, mCircle.da, 255)) % 255;
-    // print(mCircle.a);
-
-    // let blink = map(blinktime, 0, 300000, mCircle.da, 255)
-
-    // mCircle.a = (mCircle.a + mCircle.da) % 255;
+    cloud(mCloud.x % (width + 500), mCloud.y)
   }
 }
